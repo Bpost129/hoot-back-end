@@ -2,6 +2,17 @@ import mongoose from "mongoose"
 
 const Schema = mongoose.Schema
 
+const commentSchema = new Schema(
+  {
+    text: {
+      type: String,
+      required: true,
+    },
+    author: { type: Schema.Types.ObjectId, ref: 'Profile' }
+  },
+  { timestamps: true }
+)
+
 const blogSchema = new Schema(
   {
     title: {
@@ -17,6 +28,7 @@ const blogSchema = new Schema(
       required: true,
       enum: ['News', 'Sports', 'Games', 'Movies', 'Music', 'Television'],
     },
+    comments: [commentSchema],
     author: { type: Schema.Types.ObjectId, ref: 'Profile'}
   },
   { timestamps: true }
