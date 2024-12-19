@@ -9,7 +9,13 @@ const router = Router()
 // Protected Routes
 router.use(decodeUserFromToken)
 
+router.get('/', checkAuth, blogsCtrl.index)
+
+router.get('/:blogId', checkAuth, blogsCtrl.show)
+
 router.post('/', checkAuth, blogsCtrl.create)
+
+router.put('/:blogId', checkAuth, blogsCtrl.update)
 
 
 export { router }
