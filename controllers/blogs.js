@@ -55,10 +55,24 @@ async function update(req, res) {
   }
 }
 
+async function deleteBlog(req, res) {
+  try {
+    const blog = await Blog.findByIdAndDelete(req.params.blogId)
+    const profile = await Profile.findById(req.user.profile)
+    profile.blogs.remove({ _id: req.params.blogId })
+    await profile.save()
+    res.status(200).json(blog)
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+}
+
 export {
   create,
   index,
   show,
   update,
+  deleteBlog as delete,
 
 }

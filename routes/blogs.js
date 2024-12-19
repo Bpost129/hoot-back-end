@@ -15,6 +15,8 @@ router.get('/:blogId', checkAuth, blogsCtrl.show)
 
 router.post('/', checkAuth, blogsCtrl.create)
 
+router.delete('/:blogId', checkAuth, blogsCtrl.delete)
+
 router.put('/:blogId', checkAuth, blogsCtrl.update)
 
 
