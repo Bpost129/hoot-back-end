@@ -19,6 +19,8 @@ router.post('/:blogId/comments', checkAuth, blogsCtrl.createComment)
 
 router.delete('/:blogId', checkAuth, blogsCtrl.delete)
 
+router.delete('/:blogId/comments/:commentId', checkAuth, blogsCtrl.deleteComment)
+
 router.put('/:blogId', checkAuth, blogsCtrl.update)
 
 router.put('/:blogId/comments/', checkAuth, blogsCtrl.updateComment)
